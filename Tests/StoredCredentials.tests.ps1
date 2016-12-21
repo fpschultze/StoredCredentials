@@ -5,8 +5,8 @@ Import-Module "$ModuleRoot\$ModuleFile"
 
 $TestCred = @{
   Target = [guid]::NewGuid().Guid
-  UserName = [guid]::NewGuid().Guid
-  Password = [guid]::NewGuid().Guid
+  UserName = 'foo/bar'
+  Password = 'foobar'
 }
 
 Describe 'Get-StoredCredential' {
@@ -17,9 +17,7 @@ Describe 'Get-StoredCredential' {
 
   Context 'Running with existing credentials' {
     It 'returns pscredential object' {
-      $Credential = Get-StoredCredential -Name $TestCred.Target
-      $Credential.UserName | Should Be $TestCred.UserName
-      $Credential.GetNetworkCredential().Password | Should Be $TestCred.Password
+      Get-StoredCredential -Name $TestCred.Target | Should BeOfType pscredential
     }
   }
 
