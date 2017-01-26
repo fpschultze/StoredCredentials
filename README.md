@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/f3cl7slwdhpv573q?svg=true)](https://ci.appveyor.com/project/fpschultze/storedcredentials)
+[![Build status](https://ci.appveyor.com/api/projects/status/4ceafj53je3enpcn?svg=true)](https://ci.appveyor.com/project/fpschultze/storedcredentials)
 
 # StoredCredentials PowerShell Module
 Get credential from Windows Credential Manager.
