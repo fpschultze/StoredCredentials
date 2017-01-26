@@ -3,15 +3,14 @@ $ModuleFile = (Split-Path -Leaf $PSCommandPath) -replace '\.tests\.ps1$', '.psm1
 Import-Module "$ModuleRoot\$ModuleFile"
 
 
-$TestCred = @{
-  Target = [guid]::NewGuid().Guid
-  UserName = 'foo/bar'
-  Password = 'foobar'
-}
-
 Describe 'Get-StoredCredential' {
 
   # Create test credential
+  $TestCred = @{
+    Target = [guid]::NewGuid().Guid
+    UserName = 'foo\bar'
+    Password = 'foO!b4r'
+  }
   $ProcessParam = @('/generic:{0} /user:{1} /pass:{2}' -f $TestCred.Target, $TestCred.UserName, $TestCred.Password)
   Start-Process -FilePath cmdkey.exe -ArgumentList $ProcessParam -Wait -NoNewWindow
 
